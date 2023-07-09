@@ -1,0 +1,36 @@
+version: "3.5"
+
+services:
+  api:
+    container_name: dock-user
+    image: dock-user:latest
+    environment:
+      DB_HOST: postgres
+      DB_NAME: dockdatabase
+    restart: always
+    links:
+      - postgres
+    build:
+      context: .
+      target: backend
+    ports:
+      - 9090:9090
+    networks:
+      - internal-network
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    volumes:
+      - ./db_init.sh:/docker-entrypoint-initdb.d/db_init.sh
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - 5432:5432
+    networks:
+      - internal-network
+
+
+networks:
+  internal-network:
+

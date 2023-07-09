@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - preConditions:
+      - runningAs:
+          username: postgres
+
+  - changeSet:
+      id: 1
+      author: vlpetko
+      changes:
+        - createTable:
+            tableName: dock_user
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: first_name
+                  type: varchar(50)
+              - column:
+                  name: last_name
+                  type: varchar(50)
