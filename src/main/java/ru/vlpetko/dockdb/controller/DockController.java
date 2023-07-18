@@ -27,4 +27,8 @@ public class DockController {
         return DockUserMapper.INSTANCE.mapToDockUserDto(userService.setDockUser
                 (DockUserMapper.INSTANCE.mapToDockUser(dockUserDto)));
     }
+    @GetMapping("/getrowcount")
+    public String getRowCount(){
+        return userService.getRowValue();
+    }
 }
