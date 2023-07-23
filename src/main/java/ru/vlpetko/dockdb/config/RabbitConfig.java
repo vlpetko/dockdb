@@ -25,9 +25,9 @@ public class RabbitConfig {
     @Bean
     public ConnectionFactory connectionFactory() {
         CachingConnectionFactory cachingConnectionFactory = new CachingConnectionFactory("localhost");
-        cachingConnectionFactory.setUsername("guest");
-        cachingConnectionFactory.setPassword("guest");
-        cachingConnectionFactory.setVirtualHost("cpp");
+        cachingConnectionFactory.setUsername(rabbitMQProperties.getUsername());
+        cachingConnectionFactory.setPassword(rabbitMQProperties.getPassword());
+        cachingConnectionFactory.setVirtualHost(rabbitMQProperties.getHost());
         return cachingConnectionFactory;
     }
     @Bean

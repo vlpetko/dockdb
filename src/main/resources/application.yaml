@@ -25,10 +25,10 @@ spring:
 rabbitmq:
   host: ${RABBIT_HOST:localhost}
   port: 15672
-  password: ${RABBITMQ_DEFAULT_PASS:fine}
-  username: ${RABBITMQ_DEFAULT_USER:fine}
+  password: ${RABBITMQ_DEFAULT_PASS:guest}
+  username: ${RABBITMQ_DEFAULT_USER:guest}
   queues:
     controllerRequest:
       exchange: clientRequestFinesExchange
-      queue: ru.vlpetko.fine.client
-      routingkey: ru.vlpetko.fine.client.rk
+      queue: ru.vlpetko.client
+      routingkey: ru.vlpetko.guest.client.rk
