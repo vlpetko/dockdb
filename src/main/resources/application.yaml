@@ -1,6 +1,24 @@
 server:
   port: 9090
+management:
+  health:
+    rabbit:
+      enabled: false
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
 spring:
+  boot:
+    admin:
+      client:
+        url: http://${ADMIN_HOST:localhost:8061}
+  application:
+    name: dock-user
   jpa:
     generate-ddl: false
     show-sql: true
@@ -24,7 +42,7 @@ spring:
       matching-strategy: ant_path_matcher
 rabbitmq:
   host: ${RABBIT_HOST:localhost}
-  port: 15672
+  port: 5672
   password: ${RABBITMQ_DEFAULT_PASS:guest}
   username: ${RABBITMQ_DEFAULT_USER:guest}
   queues:
