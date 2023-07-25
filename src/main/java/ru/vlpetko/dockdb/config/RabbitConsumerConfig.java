@@ -56,16 +56,16 @@ public class RabbitConsumerConfig {
         return rabbitTemplate;
     }
 
-//    @Bean
-//    public SimpleMessageListenerContainer gibddResponseListenerContainer() {
-//        SimpleMessageListenerContainer container =
-//                new SimpleMessageListenerContainer(connectionFactory);
-//        container.setQueues(responseQueue());
-//        container.setConcurrentConsumers(2);
-//        container.setDefaultRequeueRejected(false);
-//        container.setAdviceChain(new Advice[]{responseInterceptor()});
-//        return container;
-//    }
+    @Bean
+    public SimpleMessageListenerContainer responseListenerContainer() {
+        SimpleMessageListenerContainer container =
+                new SimpleMessageListenerContainer(connectionFactory);
+        container.setQueues(responseQueue());
+        container.setConcurrentConsumers(2);
+        container.setDefaultRequeueRejected(false);
+        container.setAdviceChain(new Advice[]{responseInterceptor()});
+        return container;
+    }
 
     @Bean
     RetryOperationsInterceptor responseInterceptor() {
