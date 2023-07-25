@@ -1,9 +1,6 @@
 server:
   port: 9090
 management:
-  health:
-    rabbit:
-      enabled: false
   endpoints:
     web:
       exposure:
@@ -47,6 +44,6 @@ rabbitmq:
   username: ${RABBITMQ_DEFAULT_USER:guest}
   queues:
     controllerRequest:
-      exchange: clientRequestFinesExchange
+      exchange: clientRequestExchange
       queue: ru.vlpetko.client
       routingkey: ru.vlpetko.guest.client.rk
