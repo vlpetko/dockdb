@@ -22,4 +22,6 @@ public class DockUser {
     private String firstName;
 
     private String lastName;
+
+    private int randomNumber;
 }

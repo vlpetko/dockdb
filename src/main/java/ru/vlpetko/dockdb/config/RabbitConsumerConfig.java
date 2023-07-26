@@ -41,7 +41,7 @@ public class RabbitConsumerConfig {
     }
 
     @Bean
-    Binding gibddResponseBinding() {
+    Binding responseBinding() {
         return BindingBuilder
                 .bind(responseQueue())
                 .to(responseExchange())
@@ -56,16 +56,16 @@ public class RabbitConsumerConfig {
         return rabbitTemplate;
     }
 
-    @Bean
-    public SimpleMessageListenerContainer responseListenerContainer() {
-        SimpleMessageListenerContainer container =
-                new SimpleMessageListenerContainer(connectionFactory);
-        container.setQueues(responseQueue());
-        container.setConcurrentConsumers(2);
-        container.setDefaultRequeueRejected(false);
-        container.setAdviceChain(new Advice[]{responseInterceptor()});
-        return container;
-    }
+//    @Bean
+//    public SimpleMessageListenerContainer responseListenerContainer() {
+//        SimpleMessageListenerContainer container =
+//                new SimpleMessageListenerContainer(connectionFactory);
+//        container.setQueues(responseQueue());
+//        container.setConcurrentConsumers(2);
+//        container.setDefaultRequeueRejected(false);
+//        container.setAdviceChain(new Advice[]{responseInterceptor()});
+//        return container;
+//    }
 
     @Bean
     RetryOperationsInterceptor responseInterceptor() {

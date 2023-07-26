@@ -10,4 +10,6 @@ public class DockUserDto {
     private String firstName;
 
     private String lastName;
+
+    private int randomNumber;
 }
